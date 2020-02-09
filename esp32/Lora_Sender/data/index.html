@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="data:,">
+    <title>ESP32 (LoRa + Server)</title>
+    <link rel="stylesheet" href="grid.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Smart Waste Management System</h1>
+
+    </header>
+    <section class="node">
+        <h2>%ID%</h2>
+        <div class="row">
+            <div class="col span-1-of-3 bin-container">
+                <div class="bin">
+                    <div class="garbage" id="wet"></div>
+                </div>
+                <p>Wet Waste: <span id="wet_status"></span></p>
+            </div>
+            <div class="col span-1-of-3 bin-container">
+                <div class="bin">
+                    <div class="garbage" id="dry"></div>
+                </div>
+                <p>Dry waste: <span id="dry_status"></span></p>
+            </div>
+            <div class="col span-1-of-3 bin-container">
+                <div class="bin">
+                    <div class="garbage" id="ewaste"></div>
+                </div>
+                <p>E-Waste: <span id="ewaste_status"></span></p>
+            </div>
+        </div>
+    </section>
+    <script>
+        setInterval(updateValues, 5000, "ewaste");
+        setInterval(updateValues, 5000, "dry");
+        setInterval(updateValues, 5000, "wet");
+
+        function updateValues(value) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    console.log(this.responseText);
+                    document.getElementById(value).style.height = this.responseText+ "%";
+                    document.getElementById(value+'_status').innerHTML = this.responseText;
+                }
+            };
+            xhttp.open("GET", "/" + value, true);
+            xhttp.send();
+        }
+    </script>
+</body>
+
+</html>
