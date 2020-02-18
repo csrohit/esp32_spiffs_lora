@@ -1,13 +1,13 @@
 // ArduinoJson - arduinojson.org
-// Copyright Benoit Blanchon 2014-2020
+// Copyright Benoit Blanchon 2014-2019
 // MIT License
 
 #pragma once
 
-#include <ArduinoJson/Configuration.hpp>
-#include <ArduinoJson/Json/JsonSerializer.hpp>
-#include <ArduinoJson/Serialization/measure.hpp>
-#include <ArduinoJson/Serialization/serialize.hpp>
+#include "../Configuration.hpp"
+#include "../Serialization/measure.hpp"
+#include "../Serialization/serialize.hpp"
+#include "JsonSerializer.hpp"
 
 namespace ARDUINOJSON_NAMESPACE {
 
@@ -70,7 +70,7 @@ size_t serializeJsonPretty(const TSource &source, TDestination &destination) {
 }
 
 template <typename TSource>
-size_t serializeJsonPretty(const TSource &source, void *buffer,
+size_t serializeJsonPretty(const TSource &source, char *buffer,
                            size_t bufferSize) {
   return serialize<PrettyJsonSerializer>(source, buffer, bufferSize);
 }

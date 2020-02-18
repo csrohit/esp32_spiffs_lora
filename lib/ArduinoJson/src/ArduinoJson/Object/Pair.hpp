@@ -1,11 +1,11 @@
 // ArduinoJson - arduinojson.org
-// Copyright Benoit Blanchon 2014-2020
+// Copyright Benoit Blanchon 2014-2019
 // MIT License
 
 #pragma once
 
-#include <ArduinoJson/Strings/String.hpp>
-#include <ArduinoJson/Variant/VariantRef.hpp>
+#include "../Strings/String.hpp"
+#include "../Variant/VariantRef.hpp"
 
 namespace ARDUINOJSON_NAMESPACE {
 // A key value pair for CollectionData.

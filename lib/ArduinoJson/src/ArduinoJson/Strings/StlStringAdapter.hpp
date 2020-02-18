@@ -1,19 +1,16 @@
 // ArduinoJson - arduinojson.org
-// Copyright Benoit Blanchon 2014-2020
+// Copyright Benoit Blanchon 2014-2019
 // MIT License
 
 #pragma once
-
-#include <ArduinoJson/Namespace.hpp>
 
 #include <string>
 
 namespace ARDUINOJSON_NAMESPACE {
 
-template <typename TString>
 class StlStringAdapter {
  public:
-  StlStringAdapter(const TString& str) : _str(&str) {}
+  StlStringAdapter(const std::string& str) : _str(&str) {}
 
   char* save(MemoryPool* pool) const {
     size_t n = _str->length() + 1;
@@ -49,18 +46,14 @@ class StlStringAdapter {
   }
 
  private:
-  const TString* _str;
+  const std::string* _str;
 };
 
-template <typename TCharTraits, typename TAllocator>
-struct IsString<std::basic_string<char, TCharTraits, TAllocator> > : true_type {
-};
+template <>
+struct IsString<std::string> : true_type {};
 
-template <typename TCharTraits, typename TAllocator>
-inline StlStringAdapter<std::basic_string<char, TCharTraits, TAllocator> >
-adaptString(const std::basic_string<char, TCharTraits, TAllocator>& str) {
-  return StlStringAdapter<std::basic_string<char, TCharTraits, TAllocator> >(
-      str);
+inline StlStringAdapter adaptString(const std::string& str) {
+  return StlStringAdapter(str);
 }
 
 }  // namespace ARDUINOJSON_NAMESPACE

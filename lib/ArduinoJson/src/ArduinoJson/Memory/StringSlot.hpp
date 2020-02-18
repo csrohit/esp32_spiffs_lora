@@ -1,12 +1,11 @@
 // ArduinoJson - arduinojson.org
-// Copyright Benoit Blanchon 2014-2020
+// Copyright Benoit Blanchon 2014-2019
 // MIT License
 
 #pragma once
 
 #include <stddef.h>  // for size_t
-
-#include <ArduinoJson/Namespace.hpp>
+#include "../Configuration.hpp"
 
 #define JSON_STRING_SIZE(SIZE) (SIZE)
 

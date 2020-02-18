@@ -1,12 +1,12 @@
 // ArduinoJson - arduinojson.org
-// Copyright Benoit Blanchon 2014-2020
+// Copyright Benoit Blanchon 2014-2019
 // MIT License
 
 #pragma once
 
-#include <ArduinoJson/Configuration.hpp>
-#include <ArduinoJson/Numbers/FloatTraits.hpp>
-#include <ArduinoJson/Polyfills/math.hpp>
+#include "../Configuration.hpp"
+#include "../Polyfills/math.hpp"
+#include "./FloatTraits.hpp"
 
 namespace ARDUINOJSON_NAMESPACE {
 

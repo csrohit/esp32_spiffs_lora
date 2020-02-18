@@ -1,10 +1,8 @@
 // ArduinoJson - arduinojson.org
-// Copyright Benoit Blanchon 2014-2020
+// Copyright Benoit Blanchon 2014-2019
 // MIT License
 
 #pragma once
-
-#include <ArduinoJson/Namespace.hpp>
 
 #if ARDUINOJSON_ENABLE_STD_STREAM
 #include <ostream>

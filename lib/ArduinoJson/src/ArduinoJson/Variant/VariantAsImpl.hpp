@@ -1,12 +1,12 @@
 // ArduinoJson - arduinojson.org
-// Copyright Benoit Blanchon 2014-2020
+// Copyright Benoit Blanchon 2014-2019
 // MIT License
 
 #pragma once
 
-#include <ArduinoJson/Strings/IsWriteableString.hpp>
-#include <ArduinoJson/Variant/VariantFunctions.hpp>
-#include <ArduinoJson/Variant/VariantRef.hpp>
+#include "../Serialization/DynamicStringWriter.hpp"
+#include "VariantFunctions.hpp"
+#include "VariantRef.hpp"
 
 namespace ARDUINOJSON_NAMESPACE {
 

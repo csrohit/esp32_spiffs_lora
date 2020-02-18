@@ -1,23 +1,22 @@
 // ArduinoJson - arduinojson.org
-// Copyright Benoit Blanchon 2014-2020
+// Copyright Benoit Blanchon 2014-2019
 // MIT License
 
 #pragma once
 
 #include <stdint.h>
 #include <string.h>  // for strlen
-
-#include <ArduinoJson/Json/EscapeSequence.hpp>
-#include <ArduinoJson/Numbers/FloatParts.hpp>
-#include <ArduinoJson/Numbers/Integer.hpp>
-#include <ArduinoJson/Polyfills/attributes.hpp>
+#include "../Numbers/FloatParts.hpp"
+#include "../Numbers/Integer.hpp"
+#include "../Polyfills/attributes.hpp"
+#include "EscapeSequence.hpp"
 
 namespace ARDUINOJSON_NAMESPACE {
 
 template <typename TWriter>
 class TextFormatter {
  public:
-  explicit TextFormatter(TWriter writer) : _writer(writer), _length(0) {}
+  explicit TextFormatter(TWriter &writer) : _writer(writer), _length(0) {}
 
   // Returns the number of bytes sent to the TWriter implementation.
   size_t bytesWritten() const {
@@ -147,7 +146,7 @@ class TextFormatter {
   }
 
  protected:
-  TWriter _writer;
+  TWriter &_writer;
   size_t _length;
 
  private:

@@ -1,5 +1,5 @@
 // ArduinoJson - arduinojson.org
-// Copyright Benoit Blanchon 2014-2020
+// Copyright Benoit Blanchon 2014-2019
 // MIT License
 //
 // This example shows how to store your project configuration in a file.
@@ -10,12 +10,6 @@
 //   "hostname": "examples.com",
 //   "port": 2731
 // }
-//
-// To run this program, you need an SD card connected to the SPI bus as follows:
-// * MOSI <-> pin 11
-// * MISO <-> pin 12
-// * CLK  <-> pin 13
-// * CS   <-> pin 4
 //
 // https://arduinojson.org/v6/example/config/
 
@@ -117,8 +111,7 @@ void setup() {
   while (!Serial) continue;
 
   // Initialize SD library
-  const int chipSelect = 4;
-  while (!SD.begin(chipSelect)) {
+  while (!SD.begin()) {
     Serial.println(F("Failed to initialize SD library"));
     delay(1000);
   }

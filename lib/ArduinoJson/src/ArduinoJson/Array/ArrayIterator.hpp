@@ -1,11 +1,11 @@
 // ArduinoJson - arduinojson.org
-// Copyright Benoit Blanchon 2014-2020
+// Copyright Benoit Blanchon 2014-2019
 // MIT License
 
 #pragma once
 
-#include <ArduinoJson/Variant/SlotFunctions.hpp>
-#include <ArduinoJson/Variant/VariantRef.hpp>
+#include "../Variant/SlotFunctions.hpp"
+#include "../Variant/VariantRef.hpp"
 
 namespace ARDUINOJSON_NAMESPACE {
 

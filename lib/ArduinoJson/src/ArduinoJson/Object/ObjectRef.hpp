@@ -1,11 +1,11 @@
 // ArduinoJson - arduinojson.org
-// Copyright Benoit Blanchon 2014-2020
+// Copyright Benoit Blanchon 2014-2019
 // MIT License
 
 #pragma once
 
-#include <ArduinoJson/Object/ObjectFunctions.hpp>
-#include <ArduinoJson/Object/ObjectIterator.hpp>
+#include "ObjectFunctions.hpp"
+#include "ObjectIterator.hpp"
 
 // Returns the size (in bytes) of an object with n elements.
 // Can be very handy to determine the size of a StaticMemoryPool.
@@ -29,10 +29,6 @@ class ObjectRefBase {
 
   FORCE_INLINE bool isNull() const {
     return _data == 0;
-  }
-
-  FORCE_INLINE operator bool() const {
-    return _data != 0;
   }
 
   FORCE_INLINE size_t memoryUsage() const {

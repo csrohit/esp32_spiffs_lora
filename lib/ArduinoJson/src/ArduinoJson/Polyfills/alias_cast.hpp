@@ -1,14 +1,13 @@
 // ArduinoJson - arduinojson.org
-// Copyright Benoit Blanchon 2014-2020
+// Copyright Benoit Blanchon 2014-2019
 // MIT License
 
 #pragma once
 
 #include <stdint.h>
 #include <stdlib.h>  // for size_t
-
-#include <ArduinoJson/Configuration.hpp>
-#include "math.hpp"
+#include "../Configuration.hpp"
+#include "../Polyfills/math.hpp"
 
 namespace ARDUINOJSON_NAMESPACE {
 

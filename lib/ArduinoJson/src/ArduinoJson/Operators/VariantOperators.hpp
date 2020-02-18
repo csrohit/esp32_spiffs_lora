@@ -1,13 +1,13 @@
 // ArduinoJson - arduinojson.org
-// Copyright Benoit Blanchon 2014-2020
+// Copyright Benoit Blanchon 2014-2019
 // MIT License
 
 #pragma once
 
-#include <ArduinoJson/Operators/VariantCasts.hpp>
-#include <ArduinoJson/Operators/VariantComparisons.hpp>
-#include <ArduinoJson/Operators/VariantOr.hpp>
-#include <ArduinoJson/Operators/VariantShortcuts.hpp>
+#include "VariantCasts.hpp"
+#include "VariantComparisons.hpp"
+#include "VariantOr.hpp"
+#include "VariantShortcuts.hpp"
 
 namespace ARDUINOJSON_NAMESPACE {
 

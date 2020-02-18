@@ -1,11 +1,11 @@
 // ArduinoJson - arduinojson.org
-// Copyright Benoit Blanchon 2014-2020
+// Copyright Benoit Blanchon 2014-2019
 // MIT License
 
 #pragma once
 
-#include <ArduinoJson/Polyfills/type_traits.hpp>
-#include <ArduinoJson/Polyfills/utility.hpp>
+#include "../Polyfills/type_traits.hpp"
+#include "../Polyfills/utility.hpp"
 
 namespace ARDUINOJSON_NAMESPACE {
 

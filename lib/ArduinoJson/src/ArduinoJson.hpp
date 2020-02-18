@@ -1,5 +1,5 @@
 // ArduinoJson - arduinojson.org
-// Copyright Benoit Blanchon 2014-2020
+// Copyright Benoit Blanchon 2014-2019
 // MIT License
 
 #pragma once
@@ -57,7 +57,6 @@ using ARDUINOJSON_NAMESPACE::deserializeJson;
 using ARDUINOJSON_NAMESPACE::deserializeMsgPack;
 using ARDUINOJSON_NAMESPACE::DynamicJsonDocument;
 using ARDUINOJSON_NAMESPACE::JsonDocument;
-using ARDUINOJSON_NAMESPACE::measureJson;
 using ARDUINOJSON_NAMESPACE::serialized;
 using ARDUINOJSON_NAMESPACE::serializeJson;
 using ARDUINOJSON_NAMESPACE::serializeJsonPretty;

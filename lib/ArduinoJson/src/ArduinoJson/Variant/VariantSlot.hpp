@@ -1,12 +1,12 @@
 // ArduinoJson - arduinojson.org
-// Copyright Benoit Blanchon 2014-2020
+// Copyright Benoit Blanchon 2014-2019
 // MIT License
 
 #pragma once
 
-#include <ArduinoJson/Polyfills/gsl/not_null.hpp>
-#include <ArduinoJson/Polyfills/type_traits.hpp>
-#include <ArduinoJson/Variant/VariantContent.hpp>
+#include "../Polyfills/gsl/not_null.hpp"
+#include "../Polyfills/type_traits.hpp"
+#include "../Variant/VariantContent.hpp"
 
 #include <stdint.h>  // int8_t, int16_t
 
@@ -90,13 +90,6 @@ class VariantSlot {
     _next = 0;
     _flags = 0;
     _key = 0;
-  }
-
-  void movePointers(ptrdiff_t stringDistance, ptrdiff_t variantDistance) {
-    if (_flags & KEY_IS_OWNED) _key += stringDistance;
-    if (_flags & VALUE_IS_OWNED) _content.asString += stringDistance;
-    if (_flags & COLLECTION_MASK)
-      _content.asCollection.movePointers(stringDistance, variantDistance);
   }
 };
 

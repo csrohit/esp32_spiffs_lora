@@ -1,14 +1,13 @@
 // ArduinoJson - arduinojson.org
-// Copyright Benoit Blanchon 2014-2020
+// Copyright Benoit Blanchon 2014-2019
 // MIT License
 
 #pragma once
 
-#include <ArduinoJson/Misc/SerializedValue.hpp>
-#include <ArduinoJson/Numbers/convertNumber.hpp>
-#include <ArduinoJson/Polyfills/gsl/not_null.hpp>
-#include <ArduinoJson/Strings/RamStringAdapter.hpp>
-#include <ArduinoJson/Variant/VariantContent.hpp>
+#include "../Misc/SerializedValue.hpp"
+#include "../Numbers/convertNumber.hpp"
+#include "../Polyfills/gsl/not_null.hpp"
+#include "VariantContent.hpp"
 
 namespace ARDUINOJSON_NAMESPACE {
 
@@ -102,9 +101,7 @@ class VariantData {
   }
 
   bool equals(const VariantData &other) const {
-    // Check that variant have the same type, but ignore string ownership
-    if ((type() | VALUE_IS_OWNED) != (other.type() | VALUE_IS_OWNED))
-      return false;
+    if (type() != other.type()) return false;
 
     switch (type()) {
       case VALUE_IS_LINKED_STRING:
@@ -350,12 +347,6 @@ class VariantData {
     VariantData *var = _content.asCollection.get(key);
     if (var) return var;
     return _content.asCollection.add(key, pool);
-  }
-
-  void movePointers(ptrdiff_t stringDistance, ptrdiff_t variantDistance) {
-    if (_flags & VALUE_IS_OWNED) _content.asString += stringDistance;
-    if (_flags & COLLECTION_MASK)
-      _content.asCollection.movePointers(stringDistance, variantDistance);
   }
 
  private:

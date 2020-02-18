@@ -1,11 +1,11 @@
 // ArduinoJson - arduinojson.org
-// Copyright Benoit Blanchon 2014-2020
+// Copyright Benoit Blanchon 2014-2019
 // MIT License
 
 #pragma once
 
-#include <ArduinoJson/Collection/CollectionData.hpp>
-#include <ArduinoJson/Variant/VariantData.hpp>
+#include "../Variant/VariantData.hpp"
+#include "CollectionData.hpp"
 
 namespace ARDUINOJSON_NAMESPACE {
 
@@ -158,22 +158,6 @@ inline size_t CollectionData::nesting() const {
 
 inline size_t CollectionData::size() const {
   return slotSize(_head);
-}
-
-template <typename T>
-inline void movePointer(T*& p, ptrdiff_t offset) {
-  if (!p) return;
-  p = reinterpret_cast<T*>(
-      reinterpret_cast<void*>(reinterpret_cast<char*>(p) + offset));
-  ARDUINOJSON_ASSERT(isAligned(p));
-}
-
-inline void CollectionData::movePointers(ptrdiff_t stringDistance,
-                                         ptrdiff_t variantDistance) {
-  movePointer(_head, variantDistance);
-  movePointer(_tail, variantDistance);
-  for (VariantSlot* slot = _head; slot; slot = slot->next())
-    slot->movePointers(stringDistance, variantDistance);
 }
 
 }  // namespace ARDUINOJSON_NAMESPACE

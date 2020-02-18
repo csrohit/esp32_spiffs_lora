@@ -1,10 +1,10 @@
 // ArduinoJson - arduinojson.org
-// Copyright Benoit Blanchon 2014-2020
+// Copyright Benoit Blanchon 2014-2019
 // MIT License
 
 #pragma once
 
-#include <ArduinoJson/Serialization/Writers/DummyWriter.hpp>
+#include "./DummyWriter.hpp"
 
 namespace ARDUINOJSON_NAMESPACE {
 

@@ -1,10 +1,10 @@
 // ArduinoJson - arduinojson.org
-// Copyright Benoit Blanchon 2014-2020
+// Copyright Benoit Blanchon 2014-2019
 // MIT License
 
 #pragma once
 
-#include <ArduinoJson/Variant/VariantRef.hpp>
+#include "../Variant/VariantRef.hpp"
 
 namespace ARDUINOJSON_NAMESPACE {
 
@@ -126,8 +126,7 @@ class VariantComparisons {
     return compare(rhs, lhs) == 0;
   }
   template <typename T>
-  friend typename enable_if<!IsVisitable<T>::value, bool>::type operator==(
-      const T &lhs, TVariant rhs) {
+  friend bool operator==(const T &lhs, TVariant rhs) {
     return compare(rhs, lhs) == 0;
   }
 
@@ -137,8 +136,7 @@ class VariantComparisons {
     return compare(lhs, rhs) == 0;
   }
   template <typename T>
-  friend typename enable_if<!IsVisitable<T>::value, bool>::type operator==(
-      TVariant lhs, const T &rhs) {
+  friend bool operator==(TVariant lhs, const T &rhs) {
     return compare(lhs, rhs) == 0;
   }
 
@@ -148,8 +146,7 @@ class VariantComparisons {
     return compare(rhs, lhs) != 0;
   }
   template <typename T>
-  friend typename enable_if<!IsVisitable<T>::value, bool>::type operator!=(
-      const T &lhs, TVariant rhs) {
+  friend bool operator!=(const T &lhs, TVariant rhs) {
     return compare(rhs, lhs) != 0;
   }
 
@@ -159,8 +156,7 @@ class VariantComparisons {
     return compare(lhs, rhs) != 0;
   }
   template <typename T>
-  friend typename enable_if<!IsVisitable<T>::value, bool>::type operator!=(
-      TVariant lhs, const T &rhs) {
+  friend bool operator!=(TVariant lhs, const T &rhs) {
     return compare(lhs, rhs) != 0;
   }
 

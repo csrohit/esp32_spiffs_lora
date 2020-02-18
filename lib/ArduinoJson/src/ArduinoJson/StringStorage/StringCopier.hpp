@@ -1,11 +1,11 @@
 // ArduinoJson - arduinojson.org
-// Copyright Benoit Blanchon 2014-2020
+// Copyright Benoit Blanchon 2014-2019
 // MIT License
 
 #pragma once
 
-#include <ArduinoJson/Memory/MemoryPool.hpp>
-#include <ArduinoJson/Memory/StringBuilder.hpp>
+#include "../Memory/MemoryPool.hpp"
+#include "../Memory/StringBuilder.hpp"
 
 namespace ARDUINOJSON_NAMESPACE {
 

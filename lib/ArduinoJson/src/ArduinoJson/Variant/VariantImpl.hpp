@@ -1,14 +1,14 @@
 // ArduinoJson - arduinojson.org
-// Copyright Benoit Blanchon 2014-2020
+// Copyright Benoit Blanchon 2014-2019
 // MIT License
 
 #pragma once
 
-#include <ArduinoJson/Configuration.hpp>
-#include <ArduinoJson/Numbers/convertNumber.hpp>
-#include <ArduinoJson/Numbers/parseFloat.hpp>
-#include <ArduinoJson/Numbers/parseInteger.hpp>
-#include <ArduinoJson/Variant/VariantRef.hpp>
+#include "../Configuration.hpp"
+#include "../Numbers/convertNumber.hpp"
+#include "../Numbers/parseFloat.hpp"
+#include "../Numbers/parseInteger.hpp"
+#include "VariantRef.hpp"
 
 #include <string.h>  // for strcmp
 
@@ -40,10 +40,11 @@ inline bool VariantData::asBoolean() const {
       return _content.asInteger != 0;
     case VALUE_IS_FLOAT:
       return _content.asFloat != 0;
-    case VALUE_IS_NULL:
-      return false;
+    case VALUE_IS_LINKED_STRING:
+    case VALUE_IS_OWNED_STRING:
+      return strcmp("true", _content.asString) == 0;
     default:
-      return true;
+      return false;
   }
 }
 
@@ -114,7 +115,7 @@ VariantRef::to() const {
   return *this;
 }
 
-inline VariantConstRef VariantConstRef::getElement(size_t index) const {
+inline VariantConstRef VariantConstRef::operator[](size_t index) const {
   return ArrayConstRef(_data != 0 ? _data->asArray() : 0)[index];
 }
 

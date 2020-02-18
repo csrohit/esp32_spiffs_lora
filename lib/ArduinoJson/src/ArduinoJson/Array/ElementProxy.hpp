@@ -1,12 +1,11 @@
 // ArduinoJson - arduinojson.org
-// Copyright Benoit Blanchon 2014-2020
+// Copyright Benoit Blanchon 2014-2019
 // MIT License
 
 #pragma once
 
-#include <ArduinoJson/Configuration.hpp>
-#include <ArduinoJson/Operators/VariantOperators.hpp>
-#include <ArduinoJson/Variant/VariantTo.hpp>
+#include "../Configuration.hpp"
+#include "../Operators/VariantOperators.hpp"
 
 #ifdef _MSC_VER
 #pragma warning(push)
@@ -46,14 +45,6 @@ class ElementProxy : public VariantOperators<ElementProxy<TArray> >,
   FORCE_INLINE this_type& operator=(T* src) {
     getUpstreamElement().set(src);
     return *this;
-  }
-
-  FORCE_INLINE bool operator==(VariantConstRef rhs) const {
-    return static_cast<VariantConstRef>(getUpstreamElement()) == rhs;
-  }
-
-  FORCE_INLINE bool operator!=(VariantConstRef rhs) const {
-    return static_cast<VariantConstRef>(getUpstreamElement()) != rhs;
   }
 
   FORCE_INLINE void clear() const {
@@ -160,6 +151,12 @@ class ElementProxy : public VariantOperators<ElementProxy<TArray> >,
   TArray _array;
   const size_t _index;
 };
+
+template <typename TArray>
+inline ElementProxy<const TArray&> ArrayShortcuts<TArray>::operator[](
+    size_t index) const {
+  return ElementProxy<const TArray&>(*impl(), index);
+}
 
 }  // namespace ARDUINOJSON_NAMESPACE
 

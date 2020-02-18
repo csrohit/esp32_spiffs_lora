@@ -1,11 +1,13 @@
 // ArduinoJson - arduinojson.org
-// Copyright Benoit Blanchon 2014-2020
+// Copyright Benoit Blanchon 2014-2019
 // MIT License
 
 #pragma once
 
-#include <ArduinoJson/Polyfills/assert.hpp>
-#include <ArduinoJson/Variant/VariantData.hpp>
+#include "../Memory/MemoryPool.hpp"
+#include "../Polyfills/assert.hpp"
+#include "../Strings/StringAdapters.hpp"
+#include "VariantData.hpp"
 
 namespace ARDUINOJSON_NAMESPACE {
 

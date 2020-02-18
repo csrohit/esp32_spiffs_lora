@@ -1,13 +1,8 @@
 // ArduinoJson - arduinojson.org
-// Copyright Benoit Blanchon 2014-2020
+// Copyright Benoit Blanchon 2014-2019
 // MIT License
 
 #pragma once
-
-#include <ArduinoJson/Namespace.hpp>
-#include <ArduinoJson/Polyfills/assert.hpp>
-
-#include <stddef.h>  // size_t
 
 namespace ARDUINOJSON_NAMESPACE {
 
@@ -63,8 +58,6 @@ class CollectionData {
   size_t memoryUsage() const;
   size_t nesting() const;
   size_t size() const;
-
-  void movePointers(ptrdiff_t stringDistance, ptrdiff_t variantDistance);
 
  private:
   VariantSlot *getSlot(size_t index) const;

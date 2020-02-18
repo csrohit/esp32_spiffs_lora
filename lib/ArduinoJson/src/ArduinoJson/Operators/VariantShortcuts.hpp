@@ -1,11 +1,11 @@
 // ArduinoJson - arduinojson.org
-// Copyright Benoit Blanchon 2014-2020
+// Copyright Benoit Blanchon 2014-2019
 // MIT License
 
 #pragma once
 
-#include <ArduinoJson/Array/ArrayShortcuts.hpp>
-#include <ArduinoJson/Object/ObjectShortcuts.hpp>
+#include "../Array/ArrayShortcuts.hpp"
+#include "../Object/ObjectShortcuts.hpp"
 
 namespace ARDUINOJSON_NAMESPACE {
 

@@ -24,10 +24,13 @@ String processor(const String&);
 
 //Object declaration
 AsyncWebServer server(80);
-StaticJsonDocument<200> doc;
+StaticJsonDocument<200> node_address;
+StaticJsonDocument<200> readings;
+  StaticJsonDocument<200> doc;
+
 
 // global Variables
-const char* ssid = "OnePlus7";
+const char* ssid = "OnePlus";
 const char* pwd = "qwerty.1234";
 const char* ntpServer = "pool.ntp.org";
 const long  gmtOffset_sec = 3600;
@@ -39,7 +42,7 @@ void setup(){
   pinMode(36, OUTPUT);
   digitalWrite(36, HIGH);
   Serial.begin(115200);
-  setupLoRa();
+  // setupLoRa();
   setupSPIFFS();
   setupWiFi();
   setupTime();
@@ -126,29 +129,27 @@ void setupServer(){
   });
   server.on("/style.css", HTTP_GET, [](AsyncWebServerRequest *request){
     request->send(SPIFFS, "/style.css", "text/css");
-});
-  server.on("/ewaste", HTTP_GET, [](AsyncWebServerRequest *request){
-    request->send(200, "text/plain", String(ewaste));
   });
-  server.on("/dry", HTTP_GET, [](AsyncWebServerRequest *request){
-    request->send(200, "text/plain", String(dry));
+  server.on("/script.js", HTTP_GET, [](AsyncWebServerRequest *request){
+    request->send(SPIFFS, "/script.js", "text/js");
   });
-  server.on("/wet", HTTP_GET, [](AsyncWebServerRequest *request){
-    request->send(200, "text/plain", String(wet));
+  server.on("/nodes", HTTP_GET, [](AsyncWebServerRequest *request){
+    request->send(200, "text/json", String("[[\"pune\",8.5844986,73.7359567],[\"bangalore\",12.9410174,77.5633371]]"));
   });
+  server.on("/read", HTTP_GET, [](AsyncWebServerRequest *request){
+    char buff[100];
+    sprintf(buff,"[[\"pune\",%d,%d,%d],[\"bangalore\",%d,%d,%d]]", (uint8_t)random(0,100), (uint8_t)random(0,100), (uint8_t)random(0,100), (uint8_t)random(0,100), (uint8_t)random(0,100), (uint8_t)random(0,100));
+    request->send(200, "text/plain", String(buff));
+  });
+  // server.on("/dry", HTTP_GET, [](AsyncWebServerRequest *request){
+  //   request->send(200, "text/plain", String(dry));
+  // });
+  // server.on("/wet", HTTP_GET, [](AsyncWebServerRequest *request){
+  //   request->send(200, "text/plain", String(wet));
+  // });
   
 }
 String processor(const String& var){
-  if(var == "TEMPERATURE")
-    return "ROhit Nimkar";
-  else if(var == "dry")
-    return doc["bin"][0];
-  else if(var == "ID")
-    return doc["id"];
-  else if(var == "wet")
-    return doc["bin"][1];
-  else if(var == "ewaste")
-    return doc["bin"][2];
   return String();
 }
 
@@ -170,3 +171,8 @@ void listAllFiles(){
     file = root.openNextFile();
   }
 }
+/* 
+
+[["pune",47,68,21],["bangalore",40,75,16]]
+[["pune",75,18,88],["bangalore",61,20,75]]
+ */
